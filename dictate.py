@@ -35,12 +35,12 @@ def main() -> None:
         segments, _ = model.transcribe(audio, language="en",
                                        initial_prompt=corrections.initial_prompt(data))
         text = corrections.apply(" ".join(s.text.strip() for s in segments), data["corrections"])
+        keyboard.write(text)  # type first, while the target app still has focus
         print(f"\n> {text}")
-        fixed = input("Correction (Enter to keep): ").strip()
+        fixed = input("Correction for learning (Enter to skip): ").strip()
         if fixed and fixed != text:
             corrections.save(corrections.learn(text, fixed, data))
             print("Learned.")
-        keyboard.write(fixed or text)
 
 
 if __name__ == "__main__":

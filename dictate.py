@@ -36,11 +36,7 @@ def main() -> None:
                                        initial_prompt=corrections.initial_prompt(data))
         text = corrections.apply(" ".join(s.text.strip() for s in segments), data["corrections"])
         keyboard.write(text)  # type first, while the target app still has focus
-        print(f"\n> {text}")
-        fixed = input("Correction for learning (Enter to skip): ").strip()
-        if fixed and fixed != text:
-            corrections.save(corrections.learn(text, fixed, data))
-            print("Learned.")
+        print(f"\n> {text}")  # teach corrections with teach.py; a prompt here would block the next dictation
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@ Push-to-talk speech-to-text that runs fully on your PC and learns your correctio
 - Speech recognition runs locally with `faster-whisper` (English). Nothing is sent to a cloud service.
 - Hold **F9** to speak, release to transcribe.
 - After each line, type a correction (or press Enter to keep it). The app learns the swapped words and uses your corrected words as hints next time.
-- Learned data is stored in `%USERPROFILE%\.local-dictation\learned.json`. Delete that file to reset.
+- Teach a fix with `python teach.py "heard" "correct"`. Learned data is stored in `%USERPROFILE%\.local-dictation\learned.json`. Delete that file to reset.
 
 ## Setup (Windows, Python 3.10+)
 
